@@ -1,0 +1,13 @@
+Flask==2.0.1
+Flask-Bcrypt==0.7.1
+Flask-Login==0.5.0
+Flask-Mail==0.9.0
+Flask-SQLAlchemy==2.5.1
+Flask-SQLAlchemy-Session==1.1
+Flask-WTF==0.15.0
+itsdangerous==2.0.1
+sendgrid==6.8.2
+pyOpenSSL==20.0.1
+Werkzeug==2.0.1
+pyotp==2.6.0
+WTForms==2.3.3

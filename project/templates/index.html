@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/main.css">
+</head>
+
+<body>
+    <div class="login-form">
+        <form method="post" action="{{url_for('index')}}">
+            {{ form.csrf_token }}
+            <h2 class="text-center">Log in</h2>
+            <!-- {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <p class="alert alert-danger text-center">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %} -->
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                {%if category == 'error' %}
+                   <p class="alert alert-danger text-center">{{ message }}</p>
+                {% elif category == 'message' %}
+                    <p class="alert alert-success text-center">{{ message }}</p>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class="form-group">
+                {{form.username(class="form-control")}}
+                <div id="msg"></div>
+                <!-- <input type="text" class="form-control" name="username" placeholder="Username" required="required"> -->
+            </div>
+            
+            <div class="form-group">
+                {{form.password(class="form-control")}}
+            </div>
+            <div class="form-group">
+                {{form.submit(class="btn btn-primary btn-block")}}
+            </div>
+            <div class="clearfix">
+                <label class="pull-left checkbox-inline">
+                    {{form.remember_me}} {{form.remember_me.label}}
+                </label>
+                <a href="{{url_for('forgot_password')}}" class="pull-right">Forgot Password?</a>
+            </div>
+        </form>
+        <p class="text-center"><a href="{{url_for('register')}}">Create an Account</a></p>
+    </div>
+</body>
+
+</html>
