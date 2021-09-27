@@ -17,14 +17,6 @@
         <form method="post" action="{{url_for('index')}}">
             {{ form.csrf_token }}
             <h2 class="text-center">Log in</h2>
-            <!-- {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                <p class="alert alert-danger text-center">{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-            {% endwith %} -->
-
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
