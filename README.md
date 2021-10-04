@@ -70,6 +70,16 @@ python -m flask run --cert=certificates\server.crt --key=certificates\server.key
 - Parameterised SQL queries
 
 
+## Improvements Made
+- Securing Cookies
+  - HttpOnly   (Note: Flask sets HttpOnly flag to true by default)
+    - Prevent client-side script from accessing protected cookies.
+  - Secure
+    - Prevent transmission of a cookie over an unencrypted channel
+  - SameSite
+    - Prevent cookies being sent along request initiated by 3rd party website
+
+
 ## Possible Improvements
 - Known Password Check/Prevent use of weak password 
   - Advice users on getting strong password to guard against Bruteforce attack
@@ -77,6 +87,10 @@ python -m flask run --cert=certificates\server.crt --key=certificates\server.key
   - <s>Guard against Bruteforce attack</s>
 - Logging/Login audit log
   -  Check for unauthorised access or suspicious login attempts
+  -  Enable detection of attack attempts, escalate, and respond to them before data are stolen or corrupted
+- Prevent account enumeration attacks via timing attack
+  - Add in dummy computation for user login, when user does not exist
+
 
 
 
